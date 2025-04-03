@@ -1,7 +1,5 @@
 [Jira ticket (if applicable)](https://www.atlassian.com/software/jira)
 
-[Trello link (if applicable)](https://trello.com)
-
 ## What changed and Why?
 
 <!-- EXAMPLE, fill this in
