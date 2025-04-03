@@ -1,5 +1,3 @@
-[Jira ticket (if applicable)](https://www.atlassian.com/software/jira)
-
 ## What changed and Why?
 
 <!-- EXAMPLE, fill this in

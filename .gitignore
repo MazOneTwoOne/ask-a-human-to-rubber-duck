@@ -8,6 +8,6 @@ node_modules/
 .trunk/
 .DS_Store
 
-# MOJ Express Skeleton
+# App
 public/
 .env
