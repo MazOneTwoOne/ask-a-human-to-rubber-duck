@@ -157,6 +157,22 @@ const buildGovukFrontend = async () => {
 };
 
 /**
+ * Copy over images in `src`
+ */
+const copyCustomAssets = async () => {
+  try {
+    await fs.copy(
+      path.resolve('./src/images/'),
+      path.resolve('./public/assets/images/')
+    );
+    console.log('✅ Images copied successfully.');
+  } catch (error) {
+    console.error('❌ Failed to copy images:', error);
+    process.exit(1);
+  }
+};
+
+/**
  * Main build process that compiles SCSS, JavaScript, and copies assets.
  * @async
  * @returns {Promise<void>} Resolves when the entire build process is completed successfully.
@@ -167,6 +183,9 @@ const build = async () => {
 
     // Copy assets
     await copyGovukAssets();
+
+    // copy over images
+    await copyCustomAssets();
 
     // Build SCSS
     await buildScss();

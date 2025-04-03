@@ -1,1 +1,11 @@
-@import "../../node_modules/govuk-frontend/dist/govuk/all";
+@import "../../node_modules/govuk-frontend/dist/govuk/all";        
+
+.responsive-duck {
+  max-width: 100%;
+  height: auto;
+}
+
+.yellow-back-ground {
+  background-color: #ffaa00ab; 
+  padding: 1em;
+}

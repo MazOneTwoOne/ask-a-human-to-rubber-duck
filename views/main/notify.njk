@@ -1,0 +1,35 @@
+{% extends "base.njk" %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+
+{% block content %}
+  <div class="govuk-width-container">
+    <a href="/step-3" class="govuk-back-link">Back</a>
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-xl">Step 4</h1>
+          <h2 class="govuk-heading-l">PROFIT!!!!</h2>
+
+
+          {{ govukPanel({
+          titleText: "Application complete",
+          html: "Your reference number:<br><strong>RUB-BA-DUB-DUCK-" + formData.confirmation_id + "</strong>"
+          }) }}
+          {% if message == "Failed to send e-mail."%}
+            <p class="govuk-body">Although your application is complete, we have <strong>failed</strong> to send your human an email.</p>
+            <h2 class="govuk-heading-m">What happens next</h2>
+            <p class="govuk-body">Try using a "rubber duck" or contact your human directly.</p>
+            <p class="govuk-body"><a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)</p>
+          {% else%}
+            <p class="govuk-body">Your application is complete and we have <strong>successfully</strong> sent your human an email with your details.</p>
+            <h2 class="govuk-heading-m">What happens next</h2>
+            <p class="govuk-body">Your human will contact you either to confirm they can help you, or to ask for more information.</p>
+            <p class="govuk-body"><a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)</p>
+          {% endif%}
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}
