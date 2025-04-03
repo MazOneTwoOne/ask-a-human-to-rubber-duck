@@ -1,0 +1,136 @@
+{% extends "base.njk" %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{% block content %}
+    <div class="govuk-width-container">
+        <a href="/" class="govuk-back-link">Back</a>
+        <main class="govuk-main-wrapper">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    {% if errors.length > 0 %}
+                        {{ govukErrorSummary({
+                            titleText: "There is a problem",
+                            errorList: errors
+                        }) }}
+                    {% endif %}
+
+                    <h1 class="govuk-heading-xl">Step 1</h1>
+                    <form action="/step-1" method="post">
+                        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                        {% call govukFieldset({
+                        legend: {
+                            text: "Provide some context",
+                            classes: "govuk-fieldset__legend--l",
+                            isPageHeading: true
+                        }
+                        }) %}
+
+                        {{ govukInput({
+                            label: {
+                                text: "What is your name?",
+                                classes: "govuk-label--m",
+                                isPageHeading: false
+                                },
+                                hint: {
+                                    text: "The thing people mispronounce sometimes"
+                                },
+                                errorMessage: errors.yourName,
+                                classes: "govuk-input--width-20",
+                                id: "your-name",
+                                name: "yourName",
+                                value: formData.yourName or ''
+                            }) }}
+
+                        {{ govukRadios({
+                            name: "typeOfProblem",
+                            fieldset: {
+                                legend: {
+                                text: 'Why do you need a "rubber duck"?',
+                                isPageHeading: false,
+                                classes: "govuk-fieldset__legend--m"
+                                }
+                            },
+                            items: [
+                                {
+                                value: "small-software-gremlin",
+                                text: "Small software gremlin",
+                                checked: formData.typeOfProblem == 'small-software-gremlin'
+                                },
+                                {
+                                value: "big-software-gremlins",
+                                text: "Big software gremlin",
+                                checked: formData.typeOfProblem == 'big-software-gremlins'
+                                },
+                                {
+                                value: "sanity-check",
+                                text: "For a Sanity check",
+                                checked: formData.typeOfProblem == 'sanity-check'
+                                },
+                                {
+                                value: "showcase",
+                                text: "A Showcase",
+                                checked: formData.typeOfProblem == 'showcase'
+                                },
+                                {
+                                divider: "or"
+                                },
+                                {
+                                value: "bath-time",
+                                text: "It's Bath time",
+                                checked: formData.typeOfProblem == 'bath-time'
+                                }
+                            ],
+                            errorMessage: errors.typeOfProblem
+                            }) }}
+
+                        
+                        {{ govukInput({
+                            label: {
+                                text: "What is the humans email address?",
+                                classes: "govuk-label--m",
+                                isPageHeading: false
+                            },
+                            hint: {
+                                text: "Not your one, the person you are requesting help from"
+                            },
+                            errorMessage: errors.email,
+                            id: "email",
+                            name: "email",
+                            type: "email",
+                            autocomplete: "email",
+                            spellcheck: false,
+                            value: formData.email or ''
+                        }) }}
+
+                        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+                        {{ govukCharacterCount({
+                            name: "moreDetail",
+                            id: "more-detail",
+                            value: formData.moreDetail or '',
+                            maxlength: 100,
+                            label: {
+                                text: "Any other useful context? (optional)",
+                                classes: "govuk-label--s",
+                                isPageHeading: false
+                            },
+                            hint: {
+                                text: "I doubt the other person would read this anyway"
+                            }
+                            }) }}
+
+                        {{ govukButton({
+                            text: "Continue"
+                            }) }}
+                        {% endcall %}
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+{% endblock %}

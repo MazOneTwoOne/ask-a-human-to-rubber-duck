@@ -17,9 +17,9 @@
 
 {% block header %}
   {{ govukHeader({
-    homepageUrl: "#",
+    homepageUrl: "/",
     serviceName: config.SERVICE_NAME,
-    serviceUrl: "#"
+    serviceUrl: "/"
   }) }}
 {% endblock %}
 
@@ -28,7 +28,7 @@
     tag: {
       text: config.SERVICE_PHASE
     },
-    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback by email</a>.'
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="mailto:patrick.sweeting@digital.justice.gov.uk">give your feedback by email</a>.'
   }) }}
 {% endblock %}
 

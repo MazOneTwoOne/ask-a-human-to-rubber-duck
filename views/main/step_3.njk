@@ -1,0 +1,24 @@
+{% extends "base.njk" %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    <a href="/check-answers" class="govuk-back-link">Back</a>
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-xl">Step 3</h1>
+          <h2 class="govuk-heading-l">????</h2>
+
+          <p class="govuk-body-s">(This is a reference to the <a href="https://knowyourmeme.com/memes/profit" target="_blank" class="govuk-link">???? PROFIT!!!!</a> meme).</p>
+          <form action="/notify" method="get">
+            {{ govukButton({
+                text: "Continue"
+            }) }}
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

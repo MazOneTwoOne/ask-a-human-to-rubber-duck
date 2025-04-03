@@ -1,5 +1,39 @@
 {% extends "base.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% block content %}
     <h1 class="govuk-heading-xl">{{config.SERVICE_NAME}}</h1>
+    <p class="govuk-body-l">
+        Use this service to ask a trusted human for their help, to debug your software gremlins. 
+    </p>
+
+    {{ govukButton({
+        text: "Start now",
+        href: "/step-1",
+        isStartButton: true
+    }) }}
+
+    <div class="govuk-width-container">
+        <main class="govuk-main-wrapper yellow-back-ground">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <img src="/assets/images/duck.png" alt="Icon illustration of a duck." class="responsive-duck">
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <h1 class="govuk-heading-m">What do you mean by "rubber duck"?</h1>
+                    <p class="govuk-body">
+                        Rubber duck debugging (or "débogage canard" as the French would say) is a problem solving method, 
+                        whereby you explain a problem (to an inanimate object), in the hopes you reach a solution through the 
+                        process of your explanation. Instead of an inanimate object, try using a willing human.
+                    </p>
+                    <p class="govuk-body">It is best practised when you can:</p>
+                    <ul class="govuk-body govuk-list govuk-list--bullet">
+                        <li>articulate your problem in either spoken or written natural language</li>
+                        <li>describe what your software is supposed to do</li>
+                        <li>be able to observe what it actually does</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
 {% endblock %}

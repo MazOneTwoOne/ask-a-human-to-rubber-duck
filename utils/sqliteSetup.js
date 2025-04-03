@@ -1,6 +1,5 @@
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
-
 sqlite3.verbose();
 
 /**
@@ -16,12 +15,16 @@ export const initializeDB = async () => {
 
   // Initialize your database schema here.
   await db.exec(`
-    CREATE TABLE IF NOT EXISTS users (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      name TEXT NOT NULL,
-      email TEXT NOT NULL UNIQUE
-    )
-  `);
+    CREATE TABLE IF NOT EXISTS notifications (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        confirmationId INTEGER,
+        name TEXT,
+        email TEXT,
+        typeOfProblem TEXT,
+        moreDetail TEXT,
+        timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+`);
 
   return db;
 };

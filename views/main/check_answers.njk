@@ -1,0 +1,130 @@
+{% extends "base.njk" %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    <a href="/step-1" class="govuk-back-link">Back</a>
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-xl">Step 2</h1>
+
+          <h2 class="govuk-heading-l">Check your answers</h2>
+          {{ govukSummaryList({
+            card: {
+              title: {
+                text: "What is your name?"
+              }
+            },
+            rows: [
+              {
+                key: {
+                  text: "Name"
+                },
+                value: {
+                  html: formData.yourName
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/step-1#your-name",
+                      text: "Change",
+                      visuallyHiddenText: "name"
+                    }
+                  ]
+                }
+              }           
+            ]
+          }) }}
+
+          {{ govukSummaryList({
+            card: {
+              title: {
+                text: 'Why do you need a "rubber duck"?'
+              }
+            },
+            rows: [
+              {
+                key: {
+                  text: "Reason"
+                },
+                value: {
+                  html: formData.typeOfProblem
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/step-1#typeOfProblem",
+                      text: "Change",
+                      visuallyHiddenText: "type of problem"
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+
+          {{ govukSummaryList({
+            card: {
+              title: {
+                text: 'The humans email address'
+              }
+            },
+            rows: [
+              {
+                key: {
+                  text: "Email of human"
+                },
+                value: {
+                  html: formData.email
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/step-1#email",
+                      text: "Change",
+                      visuallyHiddenText: "email"
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+
+          {{ govukSummaryList({
+            card: {
+              title: {
+                text: "Any other useful context?"
+              }
+            },
+            rows: [
+              {
+                key: {
+                  text: "Additional information"
+                },
+                value: {
+                  html: formData.moreDetail
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/step-1#more-detail",
+                      text: "Change",
+                      visuallyHiddenText: "other information"
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+          <form action="/step-3" method="get">
+            {{ govukButton({
+                text: "Continue"
+            }) }}
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}
