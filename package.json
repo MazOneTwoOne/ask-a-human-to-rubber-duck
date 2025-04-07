@@ -51,7 +51,7 @@
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-jsdoc": "^50.6.9",
     "eslint-plugin-prettier": "^5.2.1",
-    "globals": "^15.14.0",
+    "globals": "^16.0.0",
     "livereload": "^0.9.3",
     "middleware-axios": "^2.1.6",
     "nodemon": "^3.1.9",
