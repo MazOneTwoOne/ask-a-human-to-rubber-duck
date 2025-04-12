@@ -2,6 +2,7 @@
 
 This is a Learning & Development repository, to explore the functionality of the [GOVUK Frontend Express JS Skeleton](https://github.com/ministryofjustice/govuk-frontend-express).
 
+This app integrates with the [GOV.UK Notify](https://www.notifications.service.gov.uk/) API, to send an email confirmation - HOWEVER only a allows 5 e-mails to be contacted with the [GOV.UK Notify](https://www.notifications.service.gov.uk/) test account.
 
 
 ## Landing Page
