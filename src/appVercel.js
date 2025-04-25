@@ -12,6 +12,7 @@ import session from 'express-session';
 import config from '../config.js';
 import indexRouter from '../routes/index.js';
 import livereload from 'connect-livereload';
+import path from 'path';
 
 export const createApp = async () => {
   const app = express();
@@ -23,6 +24,10 @@ export const createApp = async () => {
   setupMiddlewares(app);
 
   app.use(axiosMiddleware);
+
+  // Serve static files (e.g., CSS, JS, images) from src folder
+  app.use(express.static(path.join(__dirname, 'src', 'public')));
+
 
   /**
    * Response compression setup. Compresses responses unless the 'x-no-compression' header is present.
