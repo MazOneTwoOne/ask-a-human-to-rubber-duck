@@ -12,8 +12,8 @@ import { helmetSetup } from '../utils/helmetSetup.js';
 import { axiosMiddleware } from '../utils/axiosSetup.js';
 import { displayAsciiBanner } from '../utils/displayAsciiBanner.js';
 import session from 'express-session';
-import config from '../config';
-import indexRouter from '../routes/index';
+import config from '../config.js';
+import indexRouter from '../routes/index.js';
 import livereload from 'connect-livereload';
 
 const app = express();
