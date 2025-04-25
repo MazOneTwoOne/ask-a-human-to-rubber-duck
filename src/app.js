@@ -9,7 +9,7 @@ import { setupDB } from '../middleware/setupDB.js';
 import { nunjucksSetup } from '../utils/nunjucksSetup.js';
 import { rateLimitSetUp } from '../utils/rateLimitSetUp.js';
 import { helmetSetup } from '../utils/helmetSetup.js';
-import { axiosMiddleware } from '../utils/axiosMiddleware.js';
+import { axiosMiddleware } from '../utils/axiosSetup.js';
 import { displayAsciiBanner } from '../utils/displayAsciiBanner.js';
 import session from 'express-session';
 import config from '../config';
