@@ -1,33 +1,33 @@
 import express from 'express';
-import chalk from 'chalk';
 import morgan from 'morgan';
 import compression from 'compression';
 import { setupCsrf } from '../middleware/setupCsrf.js';
 import { setupMiddlewares } from '../middleware/commonMiddleware.js';
 import { setupConfig } from '../middleware/setupConfigs.js';
-import { setupDB } from '../middleware/setupDB.js';
 import { nunjucksSetup } from '../utils/nunjucksSetup.js';
 import { rateLimitSetUp } from '../utils/rateLimitSetUp.js';
 import { helmetSetup } from '../utils/helmetSetup.js';
 import { axiosMiddleware } from '../utils/axiosSetup.js';
-import { displayAsciiBanner } from '../utils/displayAsciiBanner.js';
 import session from 'express-session';
 import config from '../config.js';
 import indexRouter from '../routes/index.js';
 import livereload from 'connect-livereload';
+import path from 'path';
 
-const app = express();
+export const createApp = async () => {
+  const app = express();
 
-/**
- * Sets up common middleware for handling cookies, body parsing, etc.
- * @param {import('express').Application} app - The Express application instance.
- */
-setupMiddlewares(app);
+  /**
+   * Sets up common middleware for handling cookies, body parsing, etc.
+   * @param {import('express').Application} app - The Express application instance.
+   */
+  setupMiddlewares(app);
 
-app.use(axiosMiddleware);
+  app.use(axiosMiddleware);
 
-// Set up DB to be used in requests
-setupDB(app).then(() => {
+  // Serve static files (e.g., CSS, JS, images) from src folder
+  app.use(express.static(path.join(__dirname, 'src', 'public')));
+
 
   /**
    * Response compression setup. Compresses responses unless the 'x-no-compression' header is present.
@@ -123,22 +123,5 @@ setupDB(app).then(() => {
     app.use(livereload());
   }
 
-  /**
-   * Displays an ASCII Art banner for the application startup.
-   *
-   * @function displayAsciiBanner
-   * @param {object} config - Configuration object containing service details.
-   */
-  displayAsciiBanner(config)
-
-  /**
-   * Starts the Express server on the specified port.
-   * Logs the port number to the console upon successful startup.
-   */
-  app.listen(config.app.port, () => {
-    console.log(chalk.yellow(`Listening on port ${config.app.port}...`));
-  });
-
-}).catch(error => {
-  console.error('Failed to set up the database:', error);
-});
+  return app;
+};
