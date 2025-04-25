@@ -1,16 +1,13 @@
 import express from 'express';
-import chalk from 'chalk';
 import morgan from 'morgan';
 import compression from 'compression';
 import { setupCsrf } from '../middleware/setupCsrf.js';
 import { setupMiddlewares } from '../middleware/commonMiddleware.js';
 import { setupConfig } from '../middleware/setupConfigs.js';
-import { setupDB } from '../middleware/setupDB.js';
 import { nunjucksSetup } from '../utils/nunjucksSetup.js';
 import { rateLimitSetUp } from '../utils/rateLimitSetUp.js';
 import { helmetSetup } from '../utils/helmetSetup.js';
 import { axiosMiddleware } from '../utils/axiosSetup.js';
-import { displayAsciiBanner } from '../utils/displayAsciiBanner.js';
 import session from 'express-session';
 import config from '../config.js';
 import indexRouter from '../routes/index.js';
@@ -26,9 +23,6 @@ export const createApp = async () => {
   setupMiddlewares(app);
 
   app.use(axiosMiddleware);
-
-  // Set up DB to be used in requests
-  await setupDB(app);
 
   /**
    * Response compression setup. Compresses responses unless the 'x-no-compression' header is present.
@@ -123,14 +117,6 @@ export const createApp = async () => {
   if (process.env.NODE_ENV === 'development') {
     app.use(livereload());
   }
-
-  /**
-   * Displays an ASCII Art banner for the application startup.
-   *
-   * @function displayAsciiBanner
-   * @param {object} config - Configuration object containing service details.
-   */
-  displayAsciiBanner(config);
 
   return app;
 };
