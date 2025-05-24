@@ -1,4 +1,5 @@
 import express from 'express';
+import serverless from 'serverless-http';
 import morgan from 'morgan';
 import compression from 'compression';
 import { setupCsrf } from '../middleware/setupCsrf.js';
@@ -123,5 +124,5 @@ export const createApp = async () => {
     app.use(livereload());
   }
 
-  return app;
+  return serverless(app);
 };
