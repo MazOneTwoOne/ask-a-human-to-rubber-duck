@@ -5,6 +5,14 @@ import { fileURLToPath } from 'url'; // Import fileURLToPath to convert file URL
 import { spawn } from 'child_process'; // Import spawn from child_process to spawn new processes
 import config from './config.js'; // Import the config
 import { build } from './esbuild.js'; // Import the build function
+import createApp from './src/app.js';
+import chalk from 'chalk';
+
+const app = createApp();
+
+app.listen(config.app.port, () => {
+  console.log(chalk.yellow(`Listening on port ${config.app.port}...`));
+});
 
 // Get the directory name
 const __filename = fileURLToPath(import.meta.url);
