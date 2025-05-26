@@ -1,4 +1,4 @@
-import { createApp } from '../src/appVercel.js';
+import { createApp } from '../src/app.js';
 
 const handlerPromise = createApp();
 

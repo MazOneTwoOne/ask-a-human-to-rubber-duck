@@ -2,7 +2,6 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { SignJWT } from 'jose';
 import { typeOfProblemObject } from "./helper.js";
-// import { initializeDB } from '../utils/sqliteSetup.js';
 
 dotenv.config();
 const router = express.Router();
@@ -81,6 +80,8 @@ router.get('/notify', async (req, res) => {
   const formData = req.session.formData;
   const templateId = process.env.NOTIFY_TEMPLATE_ID;
 
+  let jwtToken;
+
   // Make the API call using JWToken
   try {
     const jwtToken = await createJwtToken();
@@ -110,18 +111,6 @@ router.get('/notify', async (req, res) => {
     console.error('Error sending email:', error.response ? error.response.data : error.message);
     res.render('main/notify', { formData, message: 'Failed to send e-mail.' });
   }
-  
-  // // Save form data into SQLite database connection
-  // try {
-  //   const db = await initializeDB();
-  //   db.run(`INSERT INTO notifications (confirmationId, name, email, typeOfProblem, moreDetail) VALUES (?, ?, ?, ?, ?)`,
-  //       formData.confirmation_id, formData.yourName, formData.email, formData.problemDescription, formData.moreDetail
-  //   );
-  //   console.log('Data saved to database');
-  // } catch (error) {
-  //   console.error('Error saving into database:', error.response ? error.response.data : error.message);
-  // }
-
 });
 
 

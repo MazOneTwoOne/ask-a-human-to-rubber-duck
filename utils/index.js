@@ -3,7 +3,6 @@ import { helmetSetup } from './helmetSetup.js';
 import { nunjucksSetup } from './nunjucksSetup.js';
 import { rateLimitSetUp } from './rateLimitSetUp.js';
 import { axiosMiddleware } from './axiosSetup.js';
-import { initializeDB } from './sqliteSetup.js';
 import { displayAsciiBanner } from './displayAsciiBanner.js';
 
 export { getBuildNumber,
@@ -12,6 +11,5 @@ export { getBuildNumber,
     nunjucksSetup,
     rateLimitSetUp,
     axiosMiddleware,
-    initializeDB,
     displayAsciiBanner
 };
