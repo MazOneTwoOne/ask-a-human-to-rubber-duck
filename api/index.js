@@ -1,8 +1,5 @@
-import app from '../index.js';
-
-
-console.log('App is:', app);
+import app from '../src/app.js'; 
 
 export default function handler(req, res) {
-  app(req, res);
+  return app(req, res);
 }
