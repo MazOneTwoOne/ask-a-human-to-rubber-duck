@@ -134,3 +134,5 @@ displayAsciiBanner(config)
 app.listen(config.app.port, () => {
   console.log(chalk.yellow(`Listening on port ${config.app.port}...`));
 });
+
+export default app;
