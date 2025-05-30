@@ -13,6 +13,12 @@ import session from 'express-session';
 import config from '../config.js';
 import indexRouter from '../routes/index.js';
 // import livereload from 'connect-livereload';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Simulate __dirname for ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default function createApp() {
   const app = express();
@@ -107,7 +113,7 @@ export default function createApp() {
    */
   app.use(morgan('dev'));
 
-  app.use('/css', express.static(path.join(process.cwd(), 'public/css')));
+  app.use('/css', express.static(path.join(__dirname, '../public/css')));
 
 
   /**
