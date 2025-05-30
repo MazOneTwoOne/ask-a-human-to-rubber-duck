@@ -9,7 +9,6 @@ import { nunjucksSetup } from '../utils/nunjucksSetup.js';
 import { rateLimitSetUp } from '../utils/rateLimitSetUp.js';
 import { helmetSetup } from '../utils/helmetSetup.js';
 import { axiosMiddleware } from '../utils/axiosSetup.js';
-import { displayAsciiBanner } from '../utils/displayAsciiBanner.js';
 import session from 'express-session';
 import config from '../config.js';
 import indexRouter from '../routes/index.js';
@@ -119,14 +118,6 @@ export default function createApp() {
   // if (process.env.NODE_ENV === 'development') {
   //   app.use(livereload());
   // }
-
-  /**
-   * Displays an ASCII Art banner for the application startup.
-   *
-   * @function displayAsciiBanner
-   * @param {object} config - Configuration object containing service details.
-   */
-  displayAsciiBanner(config)
 
   // /**
   //  * Starts the Express server on the specified port.
