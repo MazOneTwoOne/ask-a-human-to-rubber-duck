@@ -12,9 +12,6 @@
       "dest": "api/index.js"
     }
   ],
-  "ignore": [
-    "start-server.js"
-  ],
   "functions": {
     "api/index.js": {
       "maxDuration": 10
