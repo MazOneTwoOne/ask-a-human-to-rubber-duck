@@ -1,5 +1,7 @@
-import app from '../src/app.js'; 
+import createApp from '../src/app.js';
+
+const app = createApp();
 
 export default function handler(req, res) {
-  return app(req, res);
+  app(req, res); // forward request to Express app
 }
