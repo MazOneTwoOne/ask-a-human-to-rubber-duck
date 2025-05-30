@@ -13,7 +13,7 @@ import { displayAsciiBanner } from '../utils/displayAsciiBanner.js';
 import session from 'express-session';
 import config from '../config.js';
 import indexRouter from '../routes/index.js';
-import livereload from 'connect-livereload';
+// import livereload from 'connect-livereload';
 
 export default function createApp() {
   const app = express();
@@ -112,13 +112,13 @@ export default function createApp() {
    */
   app.use('/', indexRouter);
 
-  /**
-   * Enables live-reload middleware in development mode to automatically reload
-   * the server when changes are detected.
-   */
-  if (process.env.NODE_ENV === 'development') {
-    app.use(livereload());
-  }
+  // /**
+  //  * Enables live-reload middleware in development mode to automatically reload
+  //  * the server when changes are detected.
+  //  */
+  // if (process.env.NODE_ENV === 'development') {
+  //   app.use(livereload());
+  // }
 
   /**
    * Displays an ASCII Art banner for the application startup.
