@@ -1,25 +1,25 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { SignJWT } from 'jose';
-import { typeOfProblemObject } from "./helper.js";
+// import { SignJWT } from 'jose';
+// import { typeOfProblemObject } from "./helper.js";
 
 dotenv.config();
 const router = express.Router();
 
-const createJwtToken = async () => {
-  const iat = Math.floor(Date.now() / 1000); // Current time in epoch seconds
-  const payload = {
-    iss: process.env.NOTIFY_SERVICE_ID_ISS,
-    iat: iat,
-  };
+// const createJwtToken = async () => {
+//   const iat = Math.floor(Date.now() / 1000); // Current time in epoch seconds
+//   const payload = {
+//     iss: process.env.NOTIFY_SERVICE_ID_ISS,
+//     iat: iat,
+//   };
 
-  const token = await new SignJWT(payload)
-    .setProtectedHeader({ alg: 'HS256' })
-    .setIssuedAt(iat)
-    .sign(new TextEncoder().encode(process.env.NOTIFY_SECRET_KEY));
+//   const token = await new SignJWT(payload)
+//     .setProtectedHeader({ alg: 'HS256' })
+//     .setIssuedAt(iat)
+//     .sign(new TextEncoder().encode(process.env.NOTIFY_SECRET_KEY));
 
-  return token;
-};
+//   return token;
+// };
 
 /* GET home page. */
 router.get('/', (req, res) => {
