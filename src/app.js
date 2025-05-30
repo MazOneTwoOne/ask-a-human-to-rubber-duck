@@ -17,6 +17,8 @@ import indexRouter from '../routes/index.js';
 export default function createApp() {
   const app = express();
 
+  app.set('trust proxy', 1); // trust first proxy
+
   /**
    * Sets up common middleware for handling cookies, body parsing, etc.
    * @param {import('express').Application} app - The Express application instance.
@@ -62,7 +64,7 @@ export default function createApp() {
    * Set up cookie security for sessions.
    * Configures session management with secure cookie settings and session IDs.
    */
-  app.set('trust proxy', 1); // trust first proxy
+
   app.use(session({
     secret: 's3Cur3', // Secret for session encryption
     name: 'sessionId', // Custom session ID cookie name
