@@ -107,6 +107,9 @@ export default function createApp() {
    */
   app.use(morgan('dev'));
 
+  app.use('/css', express.static(path.join(process.cwd(), 'public/css')));
+
+
   /**
    * Registers the main router for the application.
    * Serves routes defined in the 'indexRouter' module.

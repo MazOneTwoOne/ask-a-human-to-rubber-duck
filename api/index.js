@@ -1,5 +1,8 @@
-import createApp from '../src/app.js';
+import app from '../src/app.js';
 import serverless from 'serverless-http';
 
-const app = createApp();
-export default serverless(app);
+const handler = serverless(app);
+
+export default async function (req, res) {
+  return handler(req, res);
+}
