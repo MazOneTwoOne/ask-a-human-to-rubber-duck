@@ -23,7 +23,7 @@ const createJwtToken = async () => {
 
 /* GET home page. */
 router.get('/', (req, res) => {
-  req.session.formData = {};
+  // req.session.formData = {};
   res.render('main/index');
 });
 
