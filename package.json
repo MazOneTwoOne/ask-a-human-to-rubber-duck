@@ -34,7 +34,7 @@
     "govuk-frontend": "^5.11.1",
     "helmet": "^8.1.0",
     "http-errors": "~2.0.0",
-    "jose": "^6.0.10",
+    "jose": "^6.0.12",
     "morgan": "~1.10.0",
     "nunjucks": "^3.2.4",
     "sqlite": "^5.1.1",
