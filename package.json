@@ -41,7 +41,7 @@
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
-    "@eslint/js": "^9.32.0",
+    "@eslint/js": "^9.34.0",
     "chokidar": "4.0.3",
     "connect-livereload": "^0.6.1",
     "esbuild": "^0.25.8",
